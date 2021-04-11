@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 //Route::get('user', 'UserController@data');
-Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], function () {
+//Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], function () {
     Route::get('user', 'UserController@data');
     Route::get('user/add', 'UserController@add');
     Route::post('user', 'UserController@addProcess');
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], 
     Route::get('video/edit/{id}','VideoController@edit');
     Route::patch('video/{id}','VideoController@editProcess');
     Route::delete('video/{id}','VideoController@delete');
-});
+//});
 
 Route::get('login', function () {
     return view('login');

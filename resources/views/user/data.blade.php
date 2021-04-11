@@ -60,7 +60,7 @@
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>    
-                                        <form>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

@@ -28,7 +28,7 @@
             @endif
 
             <div class="card">
-                <div class="card-header">
+                <div class="card-header justify-content-between">
 
                     <div class="pull-left">
                         <h4>Data Video</h4>
@@ -49,6 +49,8 @@
                             <tr>
                                 <th>NO</th>
                                 <th>Title</th>
+                                <th>Mentor</th>
+                                <th>Category</th>
                                 <th>Description</th>
                                 <th>Url</th>
                                 <th class="text-center">Action</th>
@@ -59,6 +61,8 @@
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->category }}</td>
                                     <td>{{ $item->desc }}</td>
                                     <td>{{ $item->url }}</td>
                                     <td class="text-center">
@@ -67,7 +71,7 @@
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>    
-                                        <form>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

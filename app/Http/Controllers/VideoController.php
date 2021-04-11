@@ -25,7 +25,9 @@ class VideoController extends Controller
         DB::table('video')->insert([
             'title' => $request->title,
             'desc' => $request->desc,
-            'url' => $request->url
+            'url' => $request->url,
+            'category' => $request->category,
+            'name' => $request->name,
         ]);
 
         return redirect('video')->with('status', 'Data berhasil ditambah!');
@@ -45,7 +47,9 @@ class VideoController extends Controller
         ->update([
             'title' => $request->title,
             'desc' => $request->desc,
-            'url' => $request->url
+            'url' => $request->url,
+            'category' => $request->category,
+            'name' => $request->name
         ]);
 
         return redirect('video')->with('status', 'Data berhasil diupdate!');
