@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideoTable extends Migration
+class AddColumnOnUsersRemberToken extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateVideoTable extends Migration
      */
     public function up()
     {
-        Schema::create('video', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 200);
-            $table->text('desc')->nullable();
-            $table->string('url', 200);
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('remember_token', 191)->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateVideoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
+        });
     }
 }

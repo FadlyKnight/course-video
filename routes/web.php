@@ -21,27 +21,31 @@ Route::get('/', function () {
 
 
 //Route::get('user', 'UserController@data');
-Route::get('user',[UserController::class, 'data']);
-Route::get('user/add',[UserController::class, 'add']);
-Route::post('user',[UserController::class, 'addProcess']);
-Route::get('user/edit/{id}',[UserController::class, 'edit']);
-Route::patch('user/{id}',[UserController::class, 'editProcess']);
-Route::delete('user/{id}',[UserController::class, 'delete']);
+Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], function () {
+    Route::get('user', 'UserController@data');
+    Route::get('user/add', 'UserController@add');
+    Route::post('user', 'UserController@addProcess');
+    Route::get('user/edit/{id}', 'UserController@edit');
+    Route::patch('user/{id}', 'UserController@editProcess');
+    Route::delete('user/{id}', 'UserController@delete');
 
-Route::get('video',[VideoController::class, 'data']);
-Route::get('video/add',[VideoController::class, 'add']);
-Route::post('video',[VideoController::class, 'addProcess']);
-Route::get('video/edit/{id}',[VideoController::class, 'edit']);
-Route::patch('video/{id}',[VideoController::class, 'editProcess']);
-Route::delete('video/{id}',[VideoController::class, 'delete']);
+    Route::get('video','VideoController@data');
+    Route::get('video/add','VideoController@add');
+    Route::post('video','VideoController@addProcess');
+    Route::get('video/edit/{id}','VideoController@edit');
+    Route::patch('video/{id}','VideoController@editProcess');
+    Route::delete('video/{id}','VideoController@delete');
+});
 
 Route::get('login', function () {
     return view('login');
 });
+Route::post('login', 'AuthCustomController@login')->name('login.post');
 
 Route::get('register', function () {
     return view('registration');
 });
+Route::post('register', 'AuthCustomController@register')->name('register.post');
 
 Route::get('forget-password', function () {
     return view('forget-password');
@@ -50,4 +54,3 @@ Route::get('forget-password', function () {
 Route::get('reset-password', function () {
     return view('reset-password');
 });
-

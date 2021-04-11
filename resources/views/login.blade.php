@@ -42,11 +42,9 @@
                 <a href="{{ url('forget-password' )}}" class="float-left mt-3">
                   Forgot Password?
                 </a>
-                <a  href="{{ url('/' )}}">
                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
                   Login
                 </button>
-                  </a>
               </div>
 
               <div class="mt-5 text-center">
