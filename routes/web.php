@@ -16,7 +16,7 @@ use App\Http\Controllers\VideoController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('landing.index');
 });
 
 
