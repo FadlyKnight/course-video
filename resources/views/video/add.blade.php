@@ -46,8 +46,23 @@
                                         <input type="text" name="title" class="form-control" autofocus required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Mentor</label>
+                                        <input type="text" name="name" class="form-control" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input  class="form-control" list="category" name="category">
+                                            <datalist id="category">
+                                                <option value="Kategori 1">
+                                                <option value="Kategori 2">
+                                                <option value="Kategori 3">
+                                                <option value="Kategori 4">
+                                            </datalist>
+                                        {{-- <input type="text" name="category" class="form-control" autofocus required> --}}
+                                    </div>
+                                    <div class="form-group">
                                         <label>Description</label>
-                                        <input type="text" name="desc" class="form-control" autofocus>
+                                        <textarea name="desc" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Url</label>

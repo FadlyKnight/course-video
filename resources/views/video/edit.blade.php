@@ -47,8 +47,23 @@
                                         <input type="text" name="title" value="{{ $video->title }}" class="form-control" autofocus required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Mentor</label>
+                                        <input type="text" name="name" value="{{ $video->name }}" class="form-control" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input value="{{ $video->category }}" name="category" class="form-control" list="category">
+                                        <datalist id="category">
+                                            <option value="Kategori 1">
+                                            <option value="Kategori 2">
+                                            <option value="Kategori 3">
+                                            <option value="Kategori 4">
+                                        </datalist>
+                                        {{-- <input type="text" name="title" value="{{ $video->title }}" class="form-control" autofocus required> --}}
+                                    </div>
+                                    <div class="form-group">
                                         <label>Description</label>
-                                        <input type="text" name="desc"  value="{{ $video->desc }}" class="form-control" autofocus required>
+                                        <textarea name="desc" class="form-control">{{ $video->desc }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Url</label>
