@@ -56,7 +56,7 @@
 	<div class="container">
 		<div class="row animate-box">
 			<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-				<h2>Yang Kami Ajarkan</h2>
+				<h2>AAAAAAAAAAAAAAA</h2>
 				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
 			</div>
 		</div>
