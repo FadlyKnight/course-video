@@ -52,6 +52,11 @@
 		<!--[if lt IE 9]>
 		<script src="{{ asset('landing/js/respond.min.js') }}"></script>
 		<![endif]-->
+		<style>
+			#fh5co-footer {
+			    padding: 4em 0;
+			}
+		</style>
         @yield('css')
 	</head>
 	
@@ -86,11 +91,12 @@
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
 							<li class="active"><a href="#">Beranda</a></li>
+							{{--
 							<li><a href="#">Artikel</a></li>
 							<li><a href="#">Kuesioner</a></li>
 							<li><a href="#">Gallery</a></li>
 							<li><a href="#">Tentang</a></li>
-							{{-- <li class="has-dropdown">
+							 <li class="has-dropdown">
 								<a href="#">Blog</a>
 								<ul class="dropdown">
 									<li><a href="#">Web Design</a></li>
@@ -98,8 +104,9 @@
 									<li><a href="#">Branding</a></li>
 									<li><a href="#">API</a></li>
 								</ul>
-							</li> --}}
+							</li> 
 							<li><a href="#">Kontak</a></li>
+							--}}
 							@auth
 							<li class="btn-cta"><a href="#"><span>Video</span></a></li>
 							
@@ -122,7 +129,7 @@
 	<footer id="fh5co-footer" role="contentinfo" style="background-image: url({{ asset('landing/images/img_bg_4.jpg') }});">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row row-pb-md">
+			{{-- <div class="row row-pb-md">
 				<div class="col-md-3 fh5co-widget">
 					<h3>About Education</h3>
 					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
@@ -169,13 +176,12 @@
 						<li><a href="#">API</a></li>
 					</ul>
 				</div>
-			</div>
+			</div> --}}
 
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">&copy; {{ date('Y') }} Free HTML5. All Rights Reserved.</small> 
-						<small class="block">Designed by <a href="#" target="_blank">Pesantren</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> &amp; <a href="https://www.pexels.com/" target="_blank">Pexels</a></small>
+						<small class="block">&copy; {{ date('Y') }} Pelatihan Bioethics.</small> 
 					</p>
 				</div>
 			</div>
