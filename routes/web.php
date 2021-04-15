@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('landing.index');
 })->name('landing.index');
 
-Route::get('/video', 'LandingController@watchVideo')->name('landing.video');
+Route::get('/videos', 'LandingController@watchVideo')->name('landing.video');
 
 
 //Route::get('user', 'UserController@data');
