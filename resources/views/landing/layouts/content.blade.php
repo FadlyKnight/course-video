@@ -38,6 +38,15 @@
 				cursor: pointer;
 			}
 
+			.icon-play4{
+				width: 65px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+			}
+
 			.play {
 				width: 90px;
 				height: 90px;
@@ -53,6 +62,28 @@
 				-webkit-transition: 0.3s;
 				-o-transition: 0.3s;
 				transition: 0.3s;
+			}
+
+			.video-player{
+				width: 80%;
+				position: absolute;
+				left: 50%;
+				top: 35%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+				display: none;
+			}
+
+			video:focus{
+				outline: none;
+			}
+
+			.close-btn{
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				width: 30px;
+				cursor: pointer;
 			}
 
 		
@@ -72,6 +103,9 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
+
+		<!-- Venobox.css -->
+		<link rel="stylesheet" href="{{asset('style/Venobox/venobox/venobox.css')}}">
 		
 		<!-- Animate.css -->
 		<link rel="stylesheet" href="{{ asset('landing/css/animate.css') }}">
@@ -269,8 +303,15 @@
 	<script src="{{ asset('landing/js/simplyCountdown.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ asset('landing/js/main.js') }}"></script>
+	<!-- Venobox -->
+	<script type="text/javascript" src="{{asset('style/Venobox/venobox/venobox.min.js')}}"></script>
 	<script>
     var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+
+ 	// default Venobox
+	$(document).ready(function(){
+    	$('.venobox').venobox(); 
+	});
 
     // default example
     simplyCountdown('.simply-countdown-one', {

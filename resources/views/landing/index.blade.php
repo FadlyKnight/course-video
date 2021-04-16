@@ -56,7 +56,7 @@
 	<div class="container">
 		<div class="row animate-box">
 			<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-				<h2>AAAAAAAAAAAAAAA</h2>
+				<h2>Pelatihan Bioetika</h2>
 				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 							<div class="small-img">
 								<img src="{{asset('style/assets/img/unsplash/biometric-img2.png')}}">
 									<span class="icon play-btn">
-										<i class="icon-play4"></i>
+										<a class="venobox"  data-vbtype="video" href="https://youtu.be/dgyn4UqT7Ng"><i class="icon-play4"></i></a>
 									</span>
 							</div>
 						</div>
@@ -214,6 +214,31 @@
 					</div>
 				</div>
 			</div>
+
+			{{-- <div class="video-player" id="videoPlayer">
+				<video width="100%" controls autoplay id="myVideo">
+					<source src="{{asset('style/assets/img/unsplash/video.mp4')}}" type="video/mp4">
+				</video>
+				<span class="icon close-btn" onclick="stopVideo()">
+					<i class="icon-circle-cross"></i>
+				</span>
+			</div>
+
+			<script>
+				var videoPlayer = document.getElementById("videoPlayer");
+				var myVideo = document.getElementById("myVideo");
+
+				function stopVideo(){
+					videoPlayer.style.display = "none";
+				}
+
+				function playVideo(url){
+					myVideo.src = url;
+					videoPlayer.style.display = "block";
+				}
+
+			</script> --}}
+
 						
 			
 		</div>
