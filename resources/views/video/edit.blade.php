@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <a href="{{ url('video' )}}" class="btn btn-icon btn-secondary">
+                        <a href="{{ route('video.data') }}" class="btn btn-icon btn-secondary">
                             <i class="fa fa-undo"></i> Back
                         </a>
                     </div>
@@ -39,7 +39,7 @@
                     
                         <div class="row">
                             <div class="col-md-4 offset-md-4">
-                                <form action="{{ url('video/'.$video->id) }}" method="POST">
+                                <form action="{{ route('video.editProcess',$video->id) }}" method="POST">
                                     @method('patch')
                                     @csrf
                                     <div class="form-group">
@@ -52,14 +52,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <input value="{{ $video->category }}" name="category" class="form-control" list="category">
-                                        <datalist id="category">
-                                            <option value="Kategori 1">
-                                            <option value="Kategori 2">
-                                            <option value="Kategori 3">
-                                            <option value="Kategori 4">
-                                        </datalist>
-                                        {{-- <input type="text" name="title" value="{{ $video->title }}" class="form-control" autofocus required> --}}
+                                        <input class="form-control" list="category" value="{{ $video->category }}" name="category">
+                                            <datalist id="category">
+                                                <option value="Kategori 1">
+                                                <option value="Kategori 2">
+                                                <option value="Kategori 3">
+                                                <option value="Kategori 4">
+                                            </datalist>
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
@@ -68,6 +67,7 @@
                                     <div class="form-group">
                                         <label>Url</label>
                                         <input type="text" name="url"  value="{{ $video->url }}" class="form-control" autofocus required>
+                                        <small>contoh url : <strong>https://youtu.be/</strong>xxxxxxxxxxx</small>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </form>

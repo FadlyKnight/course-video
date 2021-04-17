@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <a href="{{ url('user' )}}" class="btn btn-icon btn-secondary">
+                        <a href="{{ route('user.data') }}" class="btn btn-icon btn-secondary">
                             <i class="fa fa-undo"></i> Back
                         </a>
                     </div>
@@ -39,7 +39,7 @@
                     
                         <div class="row">
                             <div class="col-md-4 offset-md-4">
-                                <form action="{{ url('user/'.$user->id) }}" method="POST">
+                                <form action="{{ route('user.editProcess',$user->id) }}" method="POST">
                                     @method('patch')
                                     @csrf
                                     <div class="form-group">
@@ -49,6 +49,11 @@
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="text" name="email"  value="{{ $user->email }}" class="form-control" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control">
+                                        <small>Kosongkan Jika tidak ingin reset password</small>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </form>

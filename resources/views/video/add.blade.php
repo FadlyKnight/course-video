@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <a href="{{ url('video' )}}" class="btn btn-icon btn-secondary">
+                        <a href="{{ route('video.data') }}" class="btn btn-icon btn-secondary">
                             <i class="fa fa-undo"></i> Back
                         </a>
                     </div>
@@ -39,7 +39,7 @@
                     
                         <div class="row">
                             <div class="col-md-4 offset-md-4">
-                                <form action="{{url('video')}}" method="POST">
+                                <form action="{{ route('video.addProcess')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label>Title</label>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <input  class="form-control" list="category" name="category">
+                                        <input class="form-control" list="category" name="category">
                                             <datalist id="category">
                                                 <option value="Kategori 1">
                                                 <option value="Kategori 2">
@@ -67,6 +67,7 @@
                                     <div class="form-group">
                                         <label>Url</label>
                                         <input type="text" name="url" class="form-control" autofocus required>
+                                        <small>contoh url : <strong>https://youtu.be/</strong>xxxxxxxxxxx</small>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </form>

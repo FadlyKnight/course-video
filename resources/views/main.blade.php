@@ -15,6 +15,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('style/assets/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('style/assets/css/components.css')}}">
+  @yield('css')
 </head>
 
 <body>
@@ -54,23 +55,7 @@
         </ul>
       </nav>
 
-     
-
-      <div class="main-sidebar">
-        <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <a href="index.html">DashBoard Admin</a>
-          </div>
-          
-          <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">DA</a>
-          </div>
-          <a href="{{ url('/' )}}" class="nav-link has-dropdown"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
-          <a href="{{ url('user' )}}" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>User</span></a>
-          <a href="{{ url('video' )}}" class="nav-link has-dropdown"><i class="fas fa-video"></i> <span>Video</span></a>
-        </aside> 
-      </div>
-
+      @include('main-sidebar')
       
       @yield('main-content')
       
@@ -80,7 +65,7 @@
             
     </div>
   </div>
-
+  @yield('js-top')
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -89,16 +74,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{{asset('style/assets/js/stisla.js')}}"></script>
 
-
+  @yield('js-mid')
 
   <!-- JS Libraies -->
-  <script src=" {{asset('style/node_modules/jquery-ui-dist/jquery-ui.min.js')}}"></script>
+  {{-- <script src=" {{asset('style/node_modules/jquery-ui-dist/jquery-ui.min.js')}}"></script> --}}
 
   <!-- Template JS File -->
   <script src=" {{asset('style/assets/js/scripts.js')}}"></script>
   <script src=" {{asset('style/assets/js/custom.js')}}"></script>
 
   <!-- Page Specific JS File -->
-  <script src=" {{asset('style/assets/js/page/components-table.js')}}"></script>
+  {{-- <script src=" {{asset('style/assets/js/page/components-table.js')}}"></script> --}}
+
+  @yield('js-bot')
 </body>
 </html>

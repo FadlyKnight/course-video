@@ -15,7 +15,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            session()->put('error', 'Silahkan Login Terlebih Dahulu');
+            // ->with()
+            return route('landing.index');
         }
     }
 }

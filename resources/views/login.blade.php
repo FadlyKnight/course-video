@@ -12,7 +12,8 @@
             
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">IDI</span></h4>
             <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
-            <form method="POST" action="#" class="needs-validation" novalidate="">
+            <form method="POST" action="{{ route('login.post') }}" class="needs-validation" novalidate="">
+              @csrf
               <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>

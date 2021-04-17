@@ -2,6 +2,12 @@
 
 @section('title', 'Data User ')
 
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('style/assets/vendor/datatable/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/assets/vendor/datatable/dataTables.bootstrap4.min.css') }}">
+@endsection
+
 @section('main-content')
 
     <!-- Main Content -->
@@ -39,7 +45,7 @@
                 
                 <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-md">
+                    <table class="table table-bordered table-md" id="datatable">
                         <thead>
                             <tr>
                                 <th>NO</th>
@@ -55,8 +61,8 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('user/edit/' .$item->id )}}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                                        <form action="{{ url('user/' .$item->id )}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                        <a href="{{ route('user.edit',$item->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                        <form action="{{ route('user.delete',$item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>    
@@ -70,25 +76,17 @@
                 </div>
 
 
-                <div class="card-footer text-right">
-                    <nav class="d-inline-block">
-                        <ul class="pagination mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>
     
+@endsection
+
+@section('js-mid')
+    <script src="{{ asset('style/assets/vendor/datatable/datatables.min.js') }}"></script>    
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        } );
+    </script>
 @endsection

@@ -8,87 +8,6 @@
 		<meta name="description" content="Pelatihan Bioetika" />
 		<meta name="keywords" content="Pelatihan Bioetika,Pelatihan,Bioetika" />
 		<meta name="author" content="ksatriaknight & Dandi Anto" />
-		
-		<style>
-			.col{
-				flex-basis: 50%;
-				min-width: 250px;
-			}
-			.small-img-row{
-				display: flex;
-				background: #efefee;
-				margin: 20px 0;
-				align-items: center;
-				border-radius: 6px;
-				overflow: hidden;
-				width: 250px;
-			}
-			.small-img{
-				position: relative;
-			}
-			.small-img img{
-				height: 150px;
-			}
-			.play-btn{
-				width: 65px;
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-			}
-
-			.icon-play4{
-				width: 65px;
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-			}
-
-			.play {
-				width: 90px;
-				height: 90px;
-				background: rgba(0, 0, 0, 0.04);
-				display: table;
-				text-align: center;
-				margin: 0 auto;
-				margin-bottom: 30px;
-				-webkit-border-radius: 50%;
-				-moz-border-radius: 50%;
-				-ms-border-radius: 50%;
-				border-radius: 50%;
-				-webkit-transition: 0.3s;
-				-o-transition: 0.3s;
-				transition: 0.3s;
-			}
-
-			.video-player{
-				width: 80%;
-				position: absolute;
-				left: 50%;
-				top: 35%;
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-				display: none;
-			}
-
-			video:focus{
-				outline: none;
-			}
-
-			.close-btn{
-				position: absolute;
-				right: 10px;
-				top: 10px;
-				width: 30px;
-				cursor: pointer;
-			}
-
-		
-		
-		</style>
 
 		<!-- Facebook and Twitter integration -->
 		<meta property="og:title" content=""/>
@@ -105,7 +24,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
 
 		<!-- Venobox.css -->
-		<link rel="stylesheet" href="{{asset('style/Venobox/venobox/venobox.css')}}">
+		{{-- <link rel="stylesheet" href="{{asset('style/Venobox/venobox/venobox.css')}}"> --}}
 		
 		<!-- Animate.css -->
 		<link rel="stylesheet" href="{{ asset('landing/css/animate.css') }}">
@@ -150,7 +69,7 @@
 	
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
-		<div class="top">
+		{{-- <div class="top">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 text-right">
@@ -165,16 +84,16 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<div class="top-menu">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="/"><i class="icon-study"></i>Educ<span>.</span></a></div>
+						<div id="fh5co-logo"><a href="/"><i class="icon-study"></i>Bioetika<span>.</span></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li class="active"><a href="#">Beranda</a></li>
+							<li class="active"><a href="/">Beranda</a></li>
 							{{--
 							<li><a href="#">Artikel</a></li>
 							<li><a href="#">Kuesioner</a></li>
@@ -192,12 +111,14 @@
 							<li><a href="#">Kontak</a></li>
 							--}}
 							@auth
-							<li class="btn-cta"><a href="#"><span>Video</span></a></li>
-							
+							<li class="btn-cta"><a href="#" onclick='document.getElementById("logout").submit()'><span>Logout</span></a></li>
+							<form action="{{ route('logout.post') }}" method="POST" class="d-none" id="logout">
+								@csrf
+							</form>
 							@else
 
-							<li class="btn-cta"><a href="#"><span>Login Wali</span></a></li>
-							<li class="btn-cta"><a href="#"><span>Registrasi Wali</span></a></li>
+							<li class="btn-cta"><a href="#" data-toggle="modal" data-target="#loginModal"><span>Login</span></a></li>
+							<li class="btn-cta"><a href="#" data-toggle="modal" data-target="#registrasiModal"><span>Registrasi</span></a></li>
 							
 							@endauth
 						</ul>
@@ -300,37 +221,31 @@
 	<script src="{{ asset('landing/js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('landing/js/magnific-popup-options.js') }}"></script>
 	<!-- Count Down -->
-	<script src="{{ asset('landing/js/simplyCountdown.js') }}"></script>
+	{{-- <script src="{{ asset('landing/js/simplyCountdown.js') }}"></script> --}}
 	<!-- Main -->
 	<script src="{{ asset('landing/js/main.js') }}"></script>
 	<!-- Venobox -->
-	<script type="text/javascript" src="{{asset('style/Venobox/venobox/venobox.min.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('style/Venobox/venobox/venobox.min.js')}}"></script> --}}
 	<script>
     var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
- 	// default Venobox
-	$(document).ready(function(){
-    	$('.venobox').venobox(); 
-	});
-
-    // default example
-    simplyCountdown('.simply-countdown-one', {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate()
-    });
-
-    //jQuery example
-    $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        enableUtc: false
-    });
 	</script>
 
     @yield('js-bot')
 
+	<!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FreeHTML5.co
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
 	</body>
 </html>
 

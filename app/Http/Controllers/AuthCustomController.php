@@ -23,11 +23,11 @@ class AuthCustomController extends Controller
             if ($check) {
                 Auth::loginUsingId($user->id, true);
                 if (auth()->user()->role == 'peserta') {
-                    return 'peserta';      
-                    // return redirect()->route('santri.show-data');   
+                    // return 'peserta';      
+                    return redirect()->route('landing.index');   
                 } else {       
-                    return 'admin';             
-                    // return redirect()->route('admin.santri.all-data');
+                    // return 'admin';             
+                    return redirect()->route('video.data');
                 }
             } else {
                 return redirect()->back()->with('error', 'Email dan Password Tidak Cocok')->withInput();
@@ -51,7 +51,10 @@ class AuthCustomController extends Controller
             ]);
             if($validator->fails()){
                 // return redirect()->back()->with('error', $validator->getMessageBag()->first())->withInput(); 
-                return redirect()->back()->withErrors($validator)->withInput();
+                return redirect()->back()->withErrors($validator)->with([
+                    'error' => 'Periksa lagi inputan anda',
+                    'page' => 'register'
+                ])->withInput();
             }
 
             $data = $request->except(['_token','password_confirmation']);
@@ -61,8 +64,7 @@ class AuthCustomController extends Controller
             $user = User::latest()->first();
             Auth::loginUsingId($user->id, true);
             if(Auth::check()){
-                // return redirect()->route('santri.show-data');
-                return 'sukes';
+                return redirect()->route('landing.index');   
             }
             return redirect()->back()->with('error', 'Periksa lagi inputan anda')->withInput();        
         } catch (ModelNotFoundException $th) {

@@ -30,7 +30,7 @@ class VideoController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('video')->with('status', 'Data berhasil ditambah!');
+        return redirect()->route('video.data')->with('status', 'Data berhasil ditambah!');
     }
 
     public function edit($id)
@@ -38,7 +38,7 @@ class VideoController extends Controller
 
         $video = DB::table('video')->where('id', $id)->first();
         //dd($user);
-        return view ('video.edit', compact('video'));
+        return view('video.edit', compact('video'));
     }
 
     public function editProcess(Request $request, $id)
@@ -52,14 +52,14 @@ class VideoController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect('video')->with('status', 'Data berhasil diupdate!');
+        return redirect()->route('video.data')->with('status', 'Data berhasil diupdate!');
     }
 
     public function delete($id)
     {
         DB::table('video')->where('id', $id)->delete();
 
-        return redirect('video')->with('status', 'Data berhasil dihapus!');
+        return redirect()->route('video.data')->with('status', 'Data berhasil dihapus!');
     }
 
 }

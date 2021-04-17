@@ -2,6 +2,11 @@
 
 @section('title', 'Data Video ')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('style/assets/vendor/datatable/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/assets/vendor/datatable/dataTables.bootstrap4.min.css') }}">
+@endsection
+
 @section('main-content')
 
     <!-- Main Content -->
@@ -12,7 +17,6 @@
             </div>
 
         <div class="section-body">
-
     
 @endsection
 
@@ -35,7 +39,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <a href="{{ url('video/add' )}}" class="btn btn-icon btn-success">
+                        <a href="{{ route('video.add' )}}" class="btn btn-icon btn-success">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </div>
@@ -44,10 +48,10 @@
                 
                 <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-md">
+                    <table class="table table-bordered table-md" id="datatable">
                         <thead>
                             <tr>
-                                <th>NO</th>
+                                <th>No</th>
                                 <th>Title</th>
                                 <th>Mentor</th>
                                 <th>Category</th>
@@ -66,8 +70,8 @@
                                     <td>{{ $item->desc }}</td>
                                     <td>{{ $item->url }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('video/edit/' .$item->id )}}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                                        <form action="{{ url('video/' .$item->id )}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                        <a href="{{ route('video.edit',$item->id )}}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                        <form action="{{ route('video.delete',$item->id )}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>    
@@ -80,26 +84,16 @@
                 </div>
                 </div>
 
-
-                <div class="card-footer text-right">
-                    <nav class="d-inline-block">
-                        <ul class="pagination mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>
-    
+@endsection
+
+@section('js-mid')
+    <script src="{{ asset('style/assets/vendor/datatable/datatables.min.js') }}"></script>    
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        } );
+    </script>
 @endsection

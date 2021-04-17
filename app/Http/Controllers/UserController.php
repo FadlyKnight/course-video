@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function data()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')->where('role','!=','admin')->get();
 
         //return $users;
         return view('user.data', ['users' => $users]);
@@ -27,7 +28,7 @@ class UserController extends Controller
             'email' => $request->email
         ]);
 
-        return redirect('user')->with('status', 'Data berhasil ditambah!');
+        return redirect()->route('user.data')->with('status', 'Data berhasil ditambah!');
     }
 
     public function edit($id)
@@ -40,20 +41,28 @@ class UserController extends Controller
 
     public function editProcess(Request $request, $id)
     {
-        DB::table('users')->where('id', $id)
-        ->update([
+        $updated = [
             'name' => $request->name,
             'email' => $request->email
-        ]);
+        ];
+        
+        if($request->password != NULL || $request->password != ""){
+           $new_pass = Hash::make($request->password);
+           $updated['password'] = $new_pass;
+        }
+        // dd($updated);
 
-        return redirect('user')->with('status', 'Data berhasil diupdate!');
+        DB::table('users')->where('id', $id)
+        ->update($updated);
+
+        return redirect()->route('user.data')->with('status', 'Data berhasil diupdate!');
     }
 
     public function delete($id)
     {
         DB::table('users')->where('id', $id)->delete();
 
-        return redirect('user')->with('status', 'Data berhasil dihapus!');
+        return redirect()->route('user.data')->with('status', 'Data berhasil dihapus!');
     }
 
 }
