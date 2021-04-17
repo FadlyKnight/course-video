@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DiscussionController extends Controller
 {
@@ -11,30 +12,26 @@ class DiscussionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($video_id)
     {
-        //
+        $video_id = decrypt($video_id);
+        $data = DB::table('diskusi')->where('video_id', $video_id)->get();
+        // dd($data);
+        return response()->json(['status' => true, 'data' => $data, 'msg' => 'List Diskusi']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(Request $request, $video_id)
     {
-        //
-    }
+        $video_id = decrypt($video_id);
+        $insertData = [];
+        $insertData['user_id'] = auth()->user()->id;
+        $insertData['video_id'] = $video_id;
+        // user_id	video_id	reply_id	komentar	created_at	time
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+        DB::table('diskusi')->insert($insertData);
+
+        return response()->json(['status' => true, 'msg' => 'Diskusi ditambah']);
     }
 
     /**

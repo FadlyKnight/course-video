@@ -17,7 +17,16 @@ use App\Http\Controllers\VideoController;
 
 Route::get('/', 'LandingController@index')->name('landing.index');
 
-Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video')->middleware(['auth']);
+Route::middleware(['auth'])->group(function () {   
+    Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video');
+    
+    Route::prefix('ajax')->group(function () {    
+        Route::get('/diskusi', 'DiscussionController@index')->name('diskusi.index');
+        Route::post('/diskusi/store', 'DiscussionController@store')->name('diskusi.store');
+        Route::post('/diskusi/update/{id}', 'DiscussionController@update')->name('diskusi.update');
+        Route::post('/diskusi/destroy/{id}', 'DiscussionController@destroy')->name('diskusi.destroy');
+    });
+});
 
 
 //Route::get('user', 'UserController@data');
