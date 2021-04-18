@@ -80,9 +80,14 @@ class DiscussionController extends Controller
     {
         try {   
             $id = request()->id;
-            DB::table('diskusi')->where('id',$id)
-                ->where('user_id', auth()->user()->id )
-                ->delete();
+            if (auth()->user()->role == 'admin') {
+                DB::table('diskusi')->where('id',$id)
+                    ->delete();
+            } else {
+                DB::table('diskusi')->where('id',$id)
+                    ->where('user_id', auth()->user()->id )
+                    ->delete();
+            }
             return response()->json(['status' => true, 'msg' => 'Diskusi dihapus']);
         } catch (ModelNotFoundException $th) {
             return response()->json(['status' => false, 'msg' => 'Something Wrong ::mdl_xcptn::']);
