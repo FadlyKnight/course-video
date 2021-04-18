@@ -26,8 +26,8 @@ class DiscussionController extends Controller
                         ->get();
                 $data->map(function($data){
                     $data->date_human = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
-                    $data->user_id = '-';
                     $data->canDelete = ( $data->user_id == auth()->user()->id || auth()->user()->role == 'admin' ) ? true : false;
+                    $data->user_id = '-';
                     return $data;
                 });
                 return response()->json(['status' => true, 'data' => $data, 'msg' => 'List Diskusi']);
@@ -55,8 +55,8 @@ class DiscussionController extends Controller
             $id = DB::table('diskusi')->insertGetId($insertData);
             $data = DB::table('diskusi')->where('id', $id)->first();
             $data->date_human = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
-            $data->user_id = '-';
             $data->canDelete = ( $data->user_id == auth()->user()->id || auth()->user()->role == 'admin' ) ? true : false;
+            $data->user_id = '-';
             $data->name = auth()->user()->name;
 
             return response()->json(['status' => true, 'data' => $data, 'msg' => 'Diskusi ditambah']);
