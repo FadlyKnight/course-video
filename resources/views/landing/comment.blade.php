@@ -93,8 +93,10 @@
 </style>
 <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-        <form action="#" method="post" class="text-right">
-            <textarea name="komentar" style="height: 150px;" class="form-control"></textarea>
+        <div class="error"></div>
+        <form action="#" method="post" id="form-diskusi" class="text-right">
+            @csrf
+            <textarea name="komentar" style="height: 150px;" id="komentar" class="form-control"></textarea>
             <div style="height: 20px"></div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -104,68 +106,120 @@
             </div>
             <div class="comment-widgets" style="overflow-y: scroll; height: 400px;">
                 <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row m-t-0">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text w-100">
-                        <h6 class="font-medium">James Thomas</h6> <span class="m-b-15 d-block">This is awesome website. I would love to comeback again. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">April 14, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div> <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text active w-100">
-                        <h6 class="font-medium">Michael Hussey</h6> <span class="m-b-15 d-block">Thanks bbbootstrap.com for providing such useful snippets. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">May 10, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div> <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text w-100">
-                        <h6 class="font-medium">Johnathan Doeting</h6> <span class="m-b-15 d-block">Great industry leaders are not the real heroes of stock market. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">August 1, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text active w-100">
-                        <h6 class="font-medium">Michael Hussey</h6> <span class="m-b-15 d-block">Thanks bbbootstrap.com for providing such useful snippets. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">May 10, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div> <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text w-100">
-                        <h6 class="font-medium">Johnathan Doeting</h6> <span class="m-b-15 d-block">Great industry leaders are not the real heroes of stock market. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">August 1, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div><div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text active w-100">
-                        <h6 class="font-medium">Michael Hussey</h6> <span class="m-b-15 d-block">Thanks bbbootstrap.com for providing such useful snippets. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">May 10, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div> <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text w-100">
-                        <h6 class="font-medium">Johnathan Doeting</h6> <span class="m-b-15 d-block">Great industry leaders are not the real heroes of stock market. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">August 1, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div><div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text active w-100">
-                        <h6 class="font-medium">Michael Hussey</h6> <span class="m-b-15 d-block">Thanks bbbootstrap.com for providing such useful snippets. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">May 10, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div> <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
-                    <div class="comment-text w-100">
-                        <h6 class="font-medium">Johnathan Doeting</h6> <span class="m-b-15 d-block">Great industry leaders are not the real heroes of stock market. </span>
-                        <div class="comment-footer"> <span class="text-muted float-right">August 1, 2019</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
-                    </div>
-                </div>
+
+                <!-- Comment Row -->
             </div> <!-- Card -->
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "{{ route('diskusi.index', encrypt($video->id) ) }}",
+            dataType: "json",
+            encode: true,
+        }).done(function (data) {
+            
+            if(data.status){
+                let newData = data.data;
+                let commentHtml = `Tidak ada diskusi`;
+                if(newData.length > 0)
+                {
+                    commentHtml = newData.map(d => {
+                        let btnDelete = '';
+                        if(d.canDelete){
+                            btnDelete = `<button type="button" class="btn btn-danger btn-sm delete-comment" data-comment="${d.id}" >Delete</button> </div>`;
+                        }
+                        html = `<div class="d-flex flex-row comment-row m-t-0 comment-id-${d.id}">
+                                <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
+                                <div class="comment-text w-100">
+                                    <h6 class="font-medium">${d.name}</h6> <span class="m-b-15 d-block">${d.komentar}</span>
+                                    <div class="comment-footer"> <span class="text-muted float-right">${d.date_human}</span> 
+                                        ${btnDelete}
+                                </div>
+                            </div>`;
+                        return html;
+                    });
+                }
+                $('.comment-widgets').html(commentHtml);
+            } else {
+                $('.error').html(`<div class="alert alert-danger">${data.msg}</div>`);
+            }
+
+        }).fail(function (err) {
+            $('.error').html(`<div class="alert alert-danger">${data.msg}</div>`);
+        });
+
+        $("form#form-diskusi").submit(function (event) {
+            var formData = {
+                _token : "{{ csrf_token() }}",
+                komentar: $("#komentar").val(),
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('diskusi.store', encrypt($video->id) ) }}",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                if(data.status)
+                {
+                    let d = data.data;
+                        let btnDelete = '';
+                        if(d.canDelete){
+                            btnDelete = `<button type="button" class="btn btn-danger btn-sm delete-comment" data-comment="${d.id}" >Delete</button> </div>`;
+                        }
+                        html = `<div class="d-flex flex-row comment-row m-t-0 comment-id-${d.id}">
+                                <div class="p-2"><img src="{{ asset('style/assets/img/avatar/avatar-1.png') }}" alt="user" width="50" class="rounded-circle"></div>
+                                <div class="comment-text w-100">
+                                    <h6 class="font-medium">${d.name}</h6> <span class="m-b-15 d-block">${d.komentar}</span>
+                                    <div class="comment-footer"> <span class="text-muted float-right">${d.date_human}</span> 
+                                        ${btnDelete}
+                                </div>
+                            </div>`;
+
+                    $('.comment-widgets').prepend(html);
+                    $('#komentar').val('');
+                } else {
+                    $('.error').html(`<div class="alert alert-danger">${data.msg}</div>`);
+                }
+
+            }).fail(function (err) {
+                $('.error').html(`<div class="alert alert-danger">Something Error ::err::</div>`);
+            });
+            
+            // alert("Thank you for your comment!");
+            event.preventDefault();
+        });
+
+        $(".comment-widgets").on("click", "button.delete-comment", function(){
+            // alert($(this).data('comment'));
+            let id_comment = $(this).data('comment');
+            $.ajax({
+                type: "POST",
+                data: {
+                    id : id_comment, 
+                    _token : "{{ csrf_token() }}"
+                },
+                url: "{{ route('diskusi.destroy') }}",
+                dataType: "json",
+                encode: true,
+            }).done(function(data){
+                if (data.status) {
+                    $('.comment-id-'+id_comment).remove();
+                } else {   
+                    $('.error').html(`<div class="alert alert-danger">${data.msg}</div>`);
+                }
+            }).fail(function(data){
+                $('.error').html(`<div class="alert alert-danger">Something Error ::err::</div>`);
+            });
+        });
+        
+
+    });
+
+    
+</script>

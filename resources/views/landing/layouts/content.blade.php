@@ -55,6 +55,9 @@
 		<!--[if lt IE 9]>
 		<script src="{{ asset('landing/js/respond.min.js') }}"></script>
 		<![endif]-->
+		
+		<!-- jQuery -->
+		<script src="{{ asset('landing/js/jquery.min.js') }}"></script>
 		<style>
 			#fh5co-footer {
 			    padding: 4em 0;
@@ -201,8 +204,6 @@
 	
     @yield('js-top')
 
-	<!-- jQuery -->
-	<script src="{{ asset('landing/js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
 	<script src="{{ asset('landing/js/jquery.easing.1.3.js') }}"></script>
 	<!-- Bootstrap -->

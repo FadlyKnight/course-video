@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,69 +15,77 @@ class DiscussionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($video_id)
-    {
-        $video_id = decrypt($video_id);
-        $data = DB::table('diskusi')->where('video_id', $video_id)->get();
-        // dd($data);
-        return response()->json(['status' => true, 'data' => $data, 'msg' => 'List Diskusi']);
+    {    
+        try {
+            if (request()->expectsJson()) { 
+                $video_id = decrypt($video_id);
+                $data = DB::table('diskusi')->where('video_id', $video_id)
+                        ->join('users','users.id','=','diskusi.user_id')
+                        ->select('diskusi.*', 'users.name')
+                        ->orderBy('created_at','desc')
+                        ->get();
+                $data->map(function($data){
+                    $data->date_human = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
+                    $data->user_id = '-';
+                    $data->canDelete = ( $data->user_id == auth()->user()->id || auth()->user()->role == 'admin' ) ? true : false;
+                    return $data;
+                });
+                return response()->json(['status' => true, 'data' => $data, 'msg' => 'List Diskusi']);
+            } else {
+                return response()->json(['status' => false, 'msg' => 'Something Wrong ::xpct_jsn::']);
+            }
+        } catch (DecryptException $e) {
+            return response()->json(['status' => false, 'msg' => 'Something Wrong ::dcrypt_v_id::']);
+        }
     }
 
     public function store(Request $request, $video_id)
     {
-        $video_id = decrypt($video_id);
-        $insertData = [];
-        $insertData['user_id'] = auth()->user()->id;
-        $insertData['video_id'] = $video_id;
-        // user_id	video_id	reply_id	komentar	created_at	time
+        try {
+            $video_id = decrypt($video_id);
+            $insertData = [];
+            $insertData['user_id'] = auth()->user()->id;
+            $insertData['reply_id'] = $request->reply_id ?? 0;
+            $insertData['video_id'] = $video_id;
+            $insertData['komentar'] = preg_replace("/[^A-Za-z0-9?!.,-_ ]/", '', $request->komentar);
+            $insertData['created_at'] = date('Y-m-d H:i:s');
+            $insertData['updated_at'] = date('Y-m-d H:i:s');
+            $insertData['time'] = time();
+            
+            $id = DB::table('diskusi')->insertGetId($insertData);
+            $data = DB::table('diskusi')->where('id', $id)->first();
+            $data->date_human = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
+            $data->user_id = '-';
+            $data->canDelete = ( $data->user_id == auth()->user()->id || auth()->user()->role == 'admin' ) ? true : false;
+            $data->name = auth()->user()->name;
 
-
-        DB::table('diskusi')->insert($insertData);
-
-        return response()->json(['status' => true, 'msg' => 'Diskusi ditambah']);
+            return response()->json(['status' => true, 'data' => $data, 'msg' => 'Diskusi ditambah']);
+        } catch (DecryptException $e) {
+            return response()->json(['status' => false, 'msg' => 'Something Wrong ::dcrypt_v_id::']);
+        }
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $insertData['komentar'] = preg_replace("/[^A-Za-z0-9?!.,-_ ]/", '', $request->komentar);
+        $insertData['updated_at'] = date('Y-m-d H:i:s');
+        DB::table('diskusi')->where('id',$id)
+                    ->where('user_id', auth()->user()->id )
+                    ->update($insertData);
+        return response()->json(['status' => true, 'msg' => 'Diskusi diupdate']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        try {   
+            $id = request()->id;
+            DB::table('diskusi')->where('id',$id)
+                ->where('user_id', auth()->user()->id )
+                ->delete();
+            return response()->json(['status' => true, 'msg' => 'Diskusi dihapus']);
+        } catch (ModelNotFoundException $th) {
+            return response()->json(['status' => false, 'msg' => 'Something Wrong ::mdl_xcptn::']);
+        }
     }
 }
