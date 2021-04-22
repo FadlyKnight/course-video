@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Route::get('user', 'UserController@data');
 Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], function () {
+    Route::get('/', 'ConfigAppController@dashboard')->name('admin.dashboard');
+
     Route::get('user', 'UserController@data')->name('user.data');
     Route::get('user/add', 'UserController@add')->name('user.add');
     Route::post('user', 'UserController@addProcess')->name('user.addProcess');

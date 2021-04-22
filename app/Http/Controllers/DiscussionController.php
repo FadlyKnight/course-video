@@ -92,5 +92,7 @@ class DiscussionController extends Controller
         } catch (ModelNotFoundException $th) {
             return response()->json(['status' => false, 'msg' => 'Something Wrong ::mdl_xcptn::']);
         }
+        
     }
+    
 }

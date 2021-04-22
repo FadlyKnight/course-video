@@ -1,11 +1,91 @@
 @extends('landing.layouts.content')
 
 @section('css')
+			{{-- 		
+		<style>
+			.col{
+				flex-basis: 50%;
+				min-width: 250px;
+			}
+			.small-img-row{
+				display: flex;
+				background: #efefee;
+				margin: 20px 0;
+				align-items: center;
+				border-radius: 6px;
+				overflow: hidden;
+				width: 250px;
+			}
+			.small-img{
+				position: relative;
+			}
+			.small-img img{
+				height: 150px;
+			}
+			.play-btn{
+				width: 65px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+			}
+
+			.icon-play4{
+				width: 65px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+			}
+
+			.play {
+				width: 90px;
+				height: 90px;
+				background: rgba(0, 0, 0, 0.04);
+				display: table;
+				text-align: center;
+				margin: 0 auto;
+				margin-bottom: 30px;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				-ms-border-radius: 50%;
+				border-radius: 50%;
+				-webkit-transition: 0.3s;
+				-o-transition: 0.3s;
+				transition: 0.3s;
+			}
+
+			.video-player{
+				width: 80%;
+				position: absolute;
+				left: 50%;
+				top: 35%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+				display: none;
+			}
+
+			video:focus{
+				outline: none;
+			}
+
+			.close-btn{
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				width: 30px;
+				cursor: pointer;
+			}
+
+		
+		
+		</style>
+		--}}
 @endsection
 
 @section('content')
-
-@include('landing.includes.slider')
 
 <div id="fh5co-course-categories">
 	<div class="container">
