@@ -53,9 +53,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Mentor</th>
+                                <th>Mentodasdasdr</th>
                                 <th>Category</th>
                                 <th>Description</th>
+                                <th>Materi</th>
                                 <th>Url</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -68,6 +69,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category }}</td>
                                     <td>{{ $item->desc }}</td>
+                                    <td>{{ $item->url_materi }}</td>
                                     <td>{{ $item->url }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('video.edit',$item->id )}}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>

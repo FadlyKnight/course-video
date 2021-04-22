@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header justify-content-between">
 
                     <div class="pull-left">
                         <h4>Add Data User</h4>
@@ -63,6 +63,11 @@
                                     <div class="form-group">
                                         <label>Description</label>
                                         <textarea name="desc" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Materi</label>
+                                        <input type="text" name="url_materi" class="form-control" autofocus required>
+                                        <small>masukan url materi</small>
                                     </div>
                                     <div class="form-group">
                                         <label>Url</label>

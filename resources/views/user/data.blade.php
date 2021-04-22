@@ -34,10 +34,16 @@
             @endif
 
             <div class="card">
-                <div class="card-header">
+                <div class="card-header justify-content-between">
 
                     <div class="pull-left">
                         <h4>Data User</h4>
+                    </div>
+
+                    <div class="pull-right">
+                        <a href="{{ route('user.add' )}}" class="btn btn-icon btn-success">
+                            <i class="fa fa-plus"></i> Add
+                        </a>
                     </div>
 
 
@@ -51,6 +57,7 @@
                                 <th>NO</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                {{-- <th>Password</th> --}}
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -60,6 +67,7 @@
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
+                                    {{-- <td>{{ $item->password }}</td> --}}
                                     <td class="text-center">
                                         <a href="{{ route('user.edit',$item->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                         <form action="{{ route('user.delete',$item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
@@ -67,6 +75,7 @@
                                             @csrf
                                             <button class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>    
                                         </form>
+                                
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,6 +88,8 @@
             </div>
         </div>
     </div>
+
+    
     
 @endsection
 
@@ -88,5 +99,16 @@
         $(document).ready( function () {
             $('#datatable').DataTable();
         } );
+    </script>
+
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
     </script>
 @endsection

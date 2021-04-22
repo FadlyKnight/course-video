@@ -25,7 +25,9 @@ class UserController extends Controller
     {
         DB::table('users')->insert([
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+           // $new_pass = \Hash::make($request->password);
         ]);
 
         return redirect()->route('user.data')->with('status', 'Data berhasil ditambah!');
@@ -43,7 +45,8 @@ class UserController extends Controller
     {
         $updated = [
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            
         ];
         
         if($request->password != NULL || $request->password != ""){

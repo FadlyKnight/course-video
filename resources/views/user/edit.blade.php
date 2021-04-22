@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header justify-content-between">
 
                     <div class="pull-left">
                         <h4>Edit Data User</h4>
@@ -48,11 +48,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" name="email"  value="{{ $user->email }}" class="form-control" autofocus required>
+                                        <input type="text" name="email" value="{{ $user->email }}" class="form-control" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" name="password" class="form-control">
+                                        <input type="password" id="myInput" value="" name="password" class="form-control">
+                                        <p><input type="checkbox" onclick="myFunction()"> Show Password</p>
                                         <small>Kosongkan Jika tidak ingin reset password</small>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>
@@ -64,5 +65,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+    </script>
     
 @endsection
