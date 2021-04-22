@@ -40,17 +40,11 @@
               </div>
 
               <div class="form-group text-right">
-                <a href="{{ url('forget-password' )}}" class="float-left mt-3">
-                  Forgot Password?
-                </a>
                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
                   Login
                 </button>
               </div>
 
-              <div class="mt-5 text-center">
-                Don't have an account? <a href="{{ url('register' )}}">Create new one</a>
-              </div>
             </form>
 
            
