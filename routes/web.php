@@ -45,6 +45,14 @@ Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], 
     Route::patch('video/{id}','VideoController@editProcess')->name('video.editProcess');
     Route::delete('video/{id}','VideoController@delete')->name('video.delete');
 
+    Route::get('course', 'PelatihanController@data')->name('course.data');
+    Route::get('course/add', 'PelatihanController@add')->name('course.add');
+    Route::post('course', 'PelatihanController@addProcess')->name('course.addProcess');
+    Route::get('course/edit/{id}', 'PelatihanController@edit')->name('course.edit');
+    Route::patch('course/{id}', 'PelatihanController@editProcess')->name('course.editProcess');
+    Route::delete('course/{id}', 'PelatihanController@delete')->name('course.delete');
+
+    
     Route::post('config/slider', 'ConfigAppController@configSlider')->name('config.slider');
     Route::post('config/about', 'ConfigAppController@configAbout')->name('config.about');
     
