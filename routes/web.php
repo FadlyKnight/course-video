@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +44,10 @@ Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], 
     Route::get('video/edit/{id}','VideoController@edit')->name('video.edit');
     Route::patch('video/{id}','VideoController@editProcess')->name('video.editProcess');
     Route::delete('video/{id}','VideoController@delete')->name('video.delete');
+
+    Route::post('config/slider', 'ConfigAppController@configSlider')->name('config.slider');
+    Route::post('config/about', 'ConfigAppController@configAbout')->name('config.about');
+    
 });
 
 Route::get('login', function () {
@@ -53,10 +55,10 @@ Route::get('login', function () {
 });
 Route::post('login', 'AuthCustomController@login')->name('login.post');
 
-Route::get('register', function () {
-    return view('registration');
-});
-Route::post('register', 'AuthCustomController@register')->name('register.post');
+// Route::get('register', function () {
+//     return view('registration');
+// });
+// Route::post('register', 'AuthCustomController@register')->name('register.post');
 Route::post('logout', 'AuthCustomController@logout')->name('logout.post');
 
 // Route::get('forget-password', function () {

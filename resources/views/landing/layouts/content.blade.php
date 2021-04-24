@@ -112,7 +112,7 @@
 								</ul>
 							</li> 
 							<li><a href="#">Kontak</a></li>
-							--}}
+							--}} 
 							@auth
 							<li class="btn-cta"><a href="#" onclick='document.getElementById("logout").submit()'><span>Logout</span></a></li>
 							<form action="{{ route('logout.post') }}" method="POST" class="d-none" id="logout">
@@ -121,7 +121,7 @@
 							@else
 
 							<li class="btn-cta"><a href="#" data-toggle="modal" data-target="#loginModal"><span>Login</span></a></li>
-							<li class="btn-cta"><a href="#" data-toggle="modal" data-target="#registrasiModal"><span>Registrasi</span></a></li>
+							{{-- <li class="btn-cta"><a href="#" data-toggle="modal" data-target="#registrasiModal"><span>Registrasi</span></a></li> --}}
 							
 							@endauth
 						</ul>
