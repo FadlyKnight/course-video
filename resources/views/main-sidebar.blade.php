@@ -19,7 +19,7 @@
           <a href="{{ route('video.data') }}" class="nav-link"><i class="fas fa-video"></i><span>Video</span></a>
         </li>
         <li class="dropdown">
-          <a href="{{ route('course.data') }}" class="nav-link"><i class="fas fa-video"></i><span>Course</span></a>
+          <a href="{{ route('course.data') }}" class="nav-link"><i class="fas fa-book-open"></i><span>Course</span></a>
         </li>
       </ul>
     </aside>

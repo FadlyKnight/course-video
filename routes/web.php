@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'LandingController@index')->name('landing.index');
+Route::get('about', function () {
+    return view('landing.about');
+});
+
 
 Route::middleware(['auth'])->group(function () {   
     Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video');
@@ -63,9 +67,6 @@ Route::get('login', function () {
 });
 Route::post('login', 'AuthCustomController@login')->name('login.post');
 
-// Route::get('register', function () {
-//     return view('registration');
-// });
 // Route::post('register', 'AuthCustomController@register')->name('register.post');
 Route::post('logout', 'AuthCustomController@logout')->name('logout.post');
 

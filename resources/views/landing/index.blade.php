@@ -7,8 +7,6 @@
 
 @include('landing.includes.slider')
 
-@include('landing.includes.about')
-
 @include('landing.includes.list-video')
 
   @auth

@@ -53,6 +53,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
+                                <th>Pelatihan</th>
                                 <th>Mentor</th>
                                 <th>Category</th>
                                 <th>Description</th>
@@ -66,6 +67,7 @@
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->pelatihan_id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category }}</td>
                                     <td>{{ $item->desc }}</td>

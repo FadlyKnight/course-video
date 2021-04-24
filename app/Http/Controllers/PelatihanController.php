@@ -10,7 +10,7 @@ class PelatihanController extends Controller
 {
     public function data()
     {
-        $pelatihan = DB::table('pelatihan')->where('role','!=','admin')->get();
+        $pelatihan = DB::table('pelatihan')->get();
 
         //return $pelatihan;
         return view('course.data', ['pelatihan' => $pelatihan]);
@@ -23,11 +23,12 @@ class PelatihanController extends Controller
 
     public function addProcess(Request $request)
     {
+        $new_slug = strtolower(str_replace(" ", "-",$request->title_course));
         DB::table('pelatihan')->insert([
             'title_course' => $request->title_course,
-            'slug' => $request->slug,
+            'slug' => $new_slug,
             'desc_course' => $request->desc_course,
-            'create_at' => date('Y-m-d H:i:s'),
+            'created_at' => date('Y-m-d H:i:s'),
             
         ]);
 
@@ -46,9 +47,9 @@ class PelatihanController extends Controller
     {
         $updated = [
             'title_course' => $request->title_course,
-            'slug' => $request->slug,
+            'slug' => $request->title_course,
             'desc_course' => $request->desc_course,
-            'create_at' => date('Y-m-d H:i:s'),
+            'created_at' => date('Y-m-d H:i:s'),
             
         ];
     

@@ -7,7 +7,7 @@
             {!! $about !!}
         </div>
         <div class="col-md-6">
-            <img class="img-responsive" src="images/img_bg_2.jpg" alt="Free HTML5 Bootstrap Template">
+            <img class="img-responsive" src="{{ asset('landing/images/img_bg_2.jpg') }}" alt="Free HTML5 Bootstrap Template">
         </div>
     </div>
 </div>

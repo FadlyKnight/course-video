@@ -25,4 +25,9 @@ class LandingController extends Controller
         $video = DB::table('video')->get();
         return view('landing.index', compact('video'));
     }
+
+    public function about()
+    {
+        return view ('landing.about');
+    }
 }

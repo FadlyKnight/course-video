@@ -40,17 +40,12 @@
                             <form action="{{route('course.addProcess')}}"method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label>course name</label>
-                                    <input type="text" name="name" class="form-control" autofocus required>
+                                    <label>Pelatihan</label>
+                                    <input type="text" name="title_course" class="form-control" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password" id="myInput" class="form-control" autofocus required>
-                                    <p><input type="checkbox" onclick="myFunction()"> Show Password</p>
+                                    <label>Description</label>
+                                    <textarea name="desc_course" class="form-control"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-success">Save</button>
                             </form>
@@ -61,15 +56,5 @@
         </div>
     </div>
 
-    <script>
-        function myFunction() {
-          var x = document.getElementById("myInput");
-          if (x.type === "password") {
-            x.type = "text";
-          } else {
-            x.type = "password";
-          }
-        }
-    </script>
     
 @endsection

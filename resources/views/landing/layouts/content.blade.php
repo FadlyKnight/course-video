@@ -96,7 +96,20 @@
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li class="active"><a href="/">Beranda</a></li>
+							<li class="active" ><a href="/">Beranda</a></li>
+							<li><a href="about">About</a></li>
+							@php
+								$pelatihan =  DB::table('pelatihan')->get();
+							@endphp
+							<li class="has-dropdown">
+								<a href="#">Pelatihan</a>
+								<ul class="dropdown">
+									@foreach ($pelatihan as $item)                                                
+                                            <li><a href="#">{{ $item->title_course }}</a></li>
+                                    @endforeach
+									
+								</ul>
+							</li>
 							{{--
 							<li><a href="#">Artikel</a></li>
 							<li><a href="#">Kuesioner</a></li>
