@@ -34,6 +34,8 @@ class VideoController extends Controller
             'category' => $request->category,
             'name' => $request->name,
             'pelatihan_id' => $request->pelatihan_id,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         return redirect()->route('video.data')->with('status', 'Data berhasil ditambah!');
@@ -56,6 +58,7 @@ class VideoController extends Controller
             'category' => $request->category,
             'name' => $request->name,
             'pelatihan_id' => $request->pelatihan_id,
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         return redirect()->route('video.data')->with('status', 'Data berhasil diupdate!');

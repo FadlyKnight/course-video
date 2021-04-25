@@ -5,7 +5,10 @@
 			$url = $video->url;
 			$id_youtube = str_replace("https://youtu.be/", "", $url );
 		@endphp
+		
 		<div class="container" style="text-align: -webkit-center;">
+			{{-- nama pelatihan --}}
+			<h3 class="text-left">{{ $video->title }}</h3> 
 			<div class="row animate-box" style="max-width: 900px">
 				<div class="embed-responsive embed-responsive-16by9">
 					<div class="plyr__video-embed" id="player">
@@ -22,13 +25,16 @@
 		<div class="container">
 			
 			<div class="row animate-box">
-				<div class="col-md-6 text-center fh5co-heading">
+				<div class="col-md-12  fh5co-heading">
 					<h2>{{ $video->title }}</h2>
-					<p>{{ $video->desc }}</p>
+					<p class="text-justify">{{ $video->desc }}</p>  
+					<p class="text-justify">Kateogri video {{ $video->category }}</p>    
+					<p class="text-justify">Narasumber {{ $video->name }}</p>                
+					<a href="{{ $video->url }}" class="nav-link"><span>Download Materi</span></a>
 				</div> 			
-				@include('landing.comment')
+				
 			</div>			
-		
+			@include('landing.comment')
 		</div>
 	</div>
 

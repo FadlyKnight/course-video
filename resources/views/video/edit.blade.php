@@ -63,14 +63,17 @@
                                         <label>Mentor</label>
                                         <input type="text" name="name" value="{{ $video->name }}" class="form-control" autofocus required>
                                     </div>
+                                    
+                                    @php
+                                        $cat_video = DB::table('video')->groupBy('category')->select('category');
+                                    @endphp
                                     <div class="form-group">
                                         <label>Category</label>
                                         <input class="form-control" list="category" value="{{ $video->category }}" name="category">
                                             <datalist id="category">
-                                                <option value="Kategori 1">
-                                                <option value="Kategori 2">
-                                                <option value="Kategori 3">
-                                                <option value="Kategori 4">
+                                                @foreach ($cat_video->get() as $item)
+                                                    <option value="{{$item->category}}">
+                                                @endforeach
                                             </datalist>
                                     </div>
                                     <div class="form-group">

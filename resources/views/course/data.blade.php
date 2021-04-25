@@ -14,7 +14,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>course</h1>
+                <h1>Pelatihan</h1>
             </div>
 
         <div class="section-body">
@@ -37,7 +37,7 @@
                 <div class="card-header justify-content-between">
 
                     <div class="pull-left">
-                        <h4>Data Course</h4>
+                        <h4>Data Pelatihan</h4>
                     </div>
 
                     <div class="pull-right">
@@ -55,18 +55,18 @@
                         <thead>
                             <tr>
                                 <th>NO</th>
-                                <th>coursename</th>
-                                <th>Email</th>
+                                <th>Pelatihan</th>
+                                <th>Description</th>
                                 {{-- <th>Password</th> --}}
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($courses as $item)
+                            @foreach ($pelatihan as $item)
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->title_course }}</td>
+                                    <td>{{ Str::limit($item->desc_course, 40, ' (...)') }}</td>
                                     {{-- <td>{{ $item->password }}</td> --}}
                                     <td class="text-center">
                                         <a href="{{ route('course.edit',$item->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
