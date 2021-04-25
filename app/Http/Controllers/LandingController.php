@@ -22,8 +22,32 @@ class LandingController extends Controller
     }
 
     public function index(){
+        $pelatihan = DB::table('pelatihan')
+            ->get()
+            ->map(function($query){
+                $data['pelatihan_data'] = $query;
+                $data['video_data'] = DB::table('video')->where('pelatihan_id', $query->id)->take(4)->get(); 
+                return $data;
+            });
+        // dd($pelatihan);
         $video = DB::table('video')->get();
-        return view('landing.index', compact('video'));
+
+        return view('landing.index', compact('video','pelatihan'));
+    }
+
+    public function about()
+    {
+        return view ('landing.about');
+    }
+
+    public function pelatihan($slug){
+        $pelatihan = DB::table('pelatihan')->where('slug', $slug)->first();
+        if($pelatihan == NULL){
+            return redirect()->route('landing.index')->with('error','Pelatihan Tidak Ditemukan');
+        }
+        $video = DB::table('video')->where('pelatihan_id', $pelatihan->id)->get();
+        
+        return view ('landing.pelatihan', compact('video','pelatihan'));
     }
 
     public function about()

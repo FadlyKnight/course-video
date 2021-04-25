@@ -51,9 +51,15 @@
                                     @endphp
                                     <div class="form-group">
                                         <label>Pelatihan</label>
+<<<<<<< HEAD
                                         <select name="pelatihan_id" value="{{ $video->pelatihan_id }}" id="" class="form-control" required>
                                             @foreach ($pelatihan as $item)                                                
                                                 <option value="{{ $item->id }}">{{ $item->title_course }}</option>
+=======
+                                        <select name="pelatihan_id" id="" class="form-control" required>
+                                            @foreach ($pelatihan as $item)                                                
+                                                <option value="{{ $item->id }}" @if($video->pelatihan_id == $item->id ) selected @endif >{{ $item->title_course }}</option>
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
                                             @endforeach
                                         </select>
 
@@ -63,14 +69,17 @@
                                         <label>Mentor</label>
                                         <input type="text" name="name" value="{{ $video->name }}" class="form-control" autofocus required>
                                     </div>
+                                    
+                                    @php
+                                        $cat_video = DB::table('video')->groupBy('category')->select('category');
+                                    @endphp
                                     <div class="form-group">
                                         <label>Category</label>
                                         <input class="form-control" list="category" value="{{ $video->category }}" name="category">
                                             <datalist id="category">
-                                                <option value="Kategori 1">
-                                                <option value="Kategori 2">
-                                                <option value="Kategori 3">
-                                                <option value="Kategori 4">
+                                                @foreach ($cat_video->get() as $item)
+                                                    <option value="{{$item->category}}">
+                                                @endforeach
                                             </datalist>
                                     </div>
                                     <div class="form-group">

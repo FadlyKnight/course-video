@@ -17,11 +17,15 @@ Route::get('/', 'LandingController@index')->name('landing.index');
 Route::get('about', function () {
     return view('landing.about');
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
 
 Route::middleware(['auth'])->group(function () {   
     Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video');
-    
+    Route::get('pelatihan/{slug}','LandingController@pelatihan')->name('landing.pelatihan');
+
     Route::prefix('ajax')->group(function () {    
         Route::get('/diskusi/{id}', 'DiscussionController@index')->name('diskusi.index');
         Route::post('/diskusi/store/{id}', 'DiscussionController@store')->name('diskusi.store');

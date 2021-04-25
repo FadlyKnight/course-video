@@ -66,7 +66,11 @@
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->title_course }}</td>
+<<<<<<< HEAD
                                     <td>{{ $item->desc_course }}</td>
+=======
+                                    <td>{{ Str::limit($item->desc_course, 40, ' (...)') }}</td>
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
                                     {{-- <td>{{ $item->password }}</td> --}}
                                     <td class="text-center">
                                         <a href="{{ route('course.edit',$item->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
