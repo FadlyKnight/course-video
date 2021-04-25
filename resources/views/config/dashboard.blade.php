@@ -30,6 +30,11 @@
 @php
     $sliders = \DB::table('configs_app')->where('meta_key', 'data_sliders')->first()->meta_value;
     $about = \DB::table('configs_app')->where('meta_key', 'text_about')->first()->meta_value;
+    $user = \DB::table('users')->count();
+    $video = \DB::table('video')->count();
+    $diskusi = \DB::table('diskusi')->count();
+    $pelatihan = \DB::table('pelatihan')->count();
+
 
 @endphp
 
@@ -45,7 +50,7 @@
                 <h4>Total Users</h4>
               </div>
               <div class="card-body">
-                1,120
+                {{$user}}
               </div>
             </div>
           </div>
@@ -60,7 +65,7 @@
                 <h4>Total Video</h4>
               </div>
               <div class="card-body">
-                1,242
+                {{ $video }}
               </div>
             </div>
           </div>
@@ -75,7 +80,7 @@
                 <h4>Total Comment</h4>
               </div>
               <div class="card-body">
-                1,201
+                {{ $diskusi }}
               </div>
             </div>
           </div>
@@ -87,10 +92,10 @@
             </div>
             <div class="card-wrap">
               <div class="card-header">
-                <h4>Online Users</h4>
+                <h4>Total Pelatihan</h4>
               </div>
               <div class="card-body">
-                47
+                {{ $pelatihan }}
               </div>
             </div>
           </div>
@@ -106,19 +111,32 @@
             <form action="{{ route('config.slider') }}" enctype="multipart/form-data" method="POST">
               @csrf
               <div class="card-body" id="slider-data">
+                {{-- {{ dd(session()->all()) }} --}}
+                @if (session()->has('slider'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+                {{-- @foreach (json_decode($sliders) as $item) --}}
+                    
                 <div class="row slider-content">
                   <div class="col-6">
-                    <input type="file" class="dropify" data-default-file="url_of_your_file" />
+                    <input type="file" name="slider[]" class="dropify" data-default-file="" />
                   </div>
                   <div class="col-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="title" placeholder="Judul" aria-describedby="helpId">
+                      <input type="text" class="form-control" name="title[]" value="" placeholder="Judul" aria-describedby="helpId">
                     </div>
                     <div class="form-group">
-                      <textarea name="subtitle" class="form-control" style="height: 100px" placeholder="Sub Judul"></textarea>
+                      <textarea name="subtitle[]" class="form-control" style="height: 100px" placeholder="Sub Judul"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">          
+                      {{-- <a href="javascript:void(0)" onclick="hapusSlider(this)">+ Hapus Slider</a>           --}}
+                      <a href="javascript:void(0)" onclick="tambahSlider()">+ Tambah Slider</a>
                     </div>
                   </div>
                 </div>
+                
+                {{-- @endforeach --}}
+
 
                 {{-- <input type="text" class="form-control" name="subtitle"> --}}
                 {{--
@@ -165,9 +183,45 @@
 @section('js-bot')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
 <script src="{{ asset('vendor/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+
+</script>
 
 <script>
+  // let tambahSlider ;
+  
+  function tambahSlider(){
+    let html = `
+      <div class="row slider-content">
+        <div class="col-6">
+          <input type="file" class="dropify" name="slider[]" data-default-file="" />
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title[]" placeholder="Judul" aria-describedby="helpId">
+          </div>
+          <div class="form-group">
+            <textarea name="subtitle[]" class="form-control" style="height: 100px" placeholder="Sub Judul"></textarea>
+          </div>
+          <div class="d-flex justify-content-between">          
+            <a href="javascript:void(0)" onclick="hapusSlider(this)">+ Hapus Slider</a>          
+            <a href="javascript:void(0)" onclick="tambahSlider()">+ Tambah Slider</a>
+          </div>
+        </div>
+      </div>
+      `; 
+
+    $('#slider-data').append(html);
+    $('.dropify').dropify();
+  }
+
+  function hapusSlider(el){
+    $(el).closest( ".slider-content" ).remove();
+  }
+  
+
   $(document).ready(function() {
+
       $('.dropify').dropify();
       $('#summernote').summernote({
         dialogsInBody: true,

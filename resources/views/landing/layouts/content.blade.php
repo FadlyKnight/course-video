@@ -22,7 +22,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 		<!-- Venobox.css -->
 		{{-- <link rel="stylesheet" href="{{asset('style/Venobox/venobox/venobox.css')}}"> --}}
 		
@@ -105,7 +105,7 @@
 								<a href="#">Pelatihan</a>
 								<ul class="dropdown">
 									@foreach ($pelatihan as $item)                                                
-                                            <li><a href="#">{{ $item->title_course }}</a></li>
+                                            <li><a href="{{ route('landing.pelatihan', $item->slug) }}">{{ $item->title_course }}</a></li>
                                     @endforeach
 									
 								</ul>
@@ -230,7 +230,7 @@
 	<!-- Flexslider -->
 	<script src="{{ asset('landing/js/jquery.flexslider-min.js') }}"></script>
 	<!-- countTo -->
-	{{-- <script src="{{ asset('landing/js/jquery.countTo.js') }}"></script> --}}
+	<script src="{{ asset('landing/js/jquery.countTo.js') }}"></script>
 	<!-- Magnific Popup -->
 	<script src="{{ asset('landing/js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('landing/js/magnific-popup-options.js') }}"></script>
@@ -238,6 +238,19 @@
 	{{-- <script src="{{ asset('landing/js/simplyCountdown.js') }}"></script> --}}
 	<!-- Main -->
 	<script src="{{ asset('landing/js/main.js') }}"></script>
+	<script>
+		var owl = $('.owl-pelatihan');
+		owl.owlCarousel({
+			items: 1,
+			loop: true,
+			margin: 0,
+			nav: true,
+		    navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+			dots: true,
+			smartSpeed: 800,
+			autoHeight: true
+		});
+	</script>
 	<!-- Venobox -->
 	{{-- <script type="text/javascript" src="{{asset('style/Venobox/venobox/venobox.min.js')}}"></script> --}}
 	<script>
