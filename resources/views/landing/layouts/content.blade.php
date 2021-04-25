@@ -230,7 +230,7 @@
 	<!-- Flexslider -->
 	<script src="{{ asset('landing/js/jquery.flexslider-min.js') }}"></script>
 	<!-- countTo -->
-	<script src="{{ asset('landing/js/jquery.countTo.js') }}"></script>
+	{{-- <script src="{{ asset('landing/js/jquery.countTo.js') }}"></script> --}}
 	<!-- Magnific Popup -->
 	<script src="{{ asset('landing/js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('landing/js/magnific-popup-options.js') }}"></script>

@@ -4,6 +4,8 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('vendor/summernote/summernote-bs4.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" />
+
   <style>
     .hidden{
       display: none;
@@ -103,7 +105,23 @@
             </div>
             <form action="{{ route('config.slider') }}" enctype="multipart/form-data" method="POST">
               @csrf
-              <div class="card-body">
+              <div class="card-body" id="slider-data">
+                <div class="row slider-content">
+                  <div class="col-6">
+                    <input type="file" class="dropify" data-default-file="url_of_your_file" />
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="title" placeholder="Judul" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group">
+                      <textarea name="subtitle" class="form-control" style="height: 100px" placeholder="Sub Judul"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                {{-- <input type="text" class="form-control" name="subtitle"> --}}
+                {{--
                   <div class="col-12">
                       <div id="image_preview" class="row">                
                         @foreach (json_decode($sliders) as $item)
@@ -113,6 +131,7 @@
                       <a href="javascript:void(0)" id="upload_link">Upload Slider</a>
                       <input type="file" class="hidden" id="upload_file" name="slider[]" onchange="preview_image()" accept="image/*"  multiple>
                   </div>
+                --}}
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Update Slider</button>
@@ -144,11 +163,12 @@
 @endsection
 
 @section('js-bot')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
 <script src="{{ asset('vendor/summernote/summernote-bs4.min.js') }}"></script>
 
 <script>
   $(document).ready(function() {
+      $('.dropify').dropify();
       $('#summernote').summernote({
         dialogsInBody: true,
         minHeight: 150,
