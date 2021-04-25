@@ -53,6 +53,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
+                                <th>Pelatihan</th>
                                 <th>Mentor</th>
                                 <th>Category</th>
                                 <th>Description</th>
@@ -66,11 +67,12 @@
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->title_course }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category }}</td>
-                                    <td>{{ $item->desc }}</td>
-                                    <td>{{ $item->materi }}</td>
-                                    <td>{{ $item->url }}</td>
+                                    <td>{{ Str::limit($item->desc, 40, ' (...)') }}</td>
+                                    <td><a href="{{ $item->materi }}" target="_blank">{{ $item->materi }}</a></td>
+                                    <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                     <td class="text-center">
                                         <a href="{{ route('video.edit',$item->id )}}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                         <form action="{{ route('video.delete',$item->id )}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">

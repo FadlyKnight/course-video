@@ -45,6 +45,19 @@
                                         <label>Title</label>
                                         <input type="text" name="title" class="form-control" autofocus required>
                                     </div>
+                                    @php
+                                        $pelatihan =  DB::table('pelatihan')->get();
+                                    @endphp
+                                    <div class="form-group">
+                                        <label>Pelatihan</label>
+                                        <select name="pelatihan_id" id="" class="form-control" required>
+                                            @foreach ($pelatihan as $item)                                                
+                                                <option value="{{ $item->id }}">{{ $item->title_course }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        {{-- <input type="text" name="pelatihan_id" class="form-control" autofocus required> --}}
+                                    </div>
                                     <div class="form-group">
                                         <label>Mentor</label>
                                         <input type="text" name="name" class="form-control" autofocus required>

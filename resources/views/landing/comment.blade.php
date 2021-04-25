@@ -91,9 +91,11 @@
     background: rgba(0, 0, 0, 0.05)
 }
 </style>
-<div class="row d-flex justify-content-center">
-    <div class="col-lg-6">
+
+<div class="row animate-box">
+    <div class="col-md-12  fh5co-heading">
         <div class="error"></div>
+        <h4 class="card-title text-left">Umpan Diskusi</h4>
         <form action="#" method="post" id="form-diskusi" class="text-right">
             @csrf
             <textarea name="komentar" style="height: 150px;" id="komentar" class="form-control"></textarea>
@@ -101,8 +103,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <div class="card">
-            <div class="card-body text-center">
-                <h4 class="card-title">Umpan Diskusi</h4>
+            <div class="card-body text-center">        
             </div>
             <div class="comment-widgets" style="overflow-y: scroll; height: 400px;">
                 <!-- Comment Row -->

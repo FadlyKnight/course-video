@@ -5,9 +5,26 @@
 
 @section('content')
 
-@include('landing.includes.slider')
 
-@include('landing.includes.list-video')
+<div id="fh5co-course-categories">
+	<div class="container">
+    <div class="row animate-box">
+        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+            <h2>Pelatihan {{ $pelatihan->title_course }}</h2>
+            <p>{{ Str::limit($pelatihan->desc_course, 180, '...') }}</p>
+        </div> 
+    </div>
+    <div class="row">
+        @forelse ($video as $item)
+            @include('landing.includes.video-data')
+        @empty
+            <h3 class="text-center">Tidak Ada Video</h3>
+        @endforelse
+    </div>
+    </div>
+</div>
+
+    
 
   @auth
   

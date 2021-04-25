@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'LandingController@index')->name('landing.index');
+Route::get('about', function () {
+    return view('landing.about');
+});
 
 Route::middleware(['auth'])->group(function () {   
     Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video');
-    
+    Route::get('pelatihan/{slug}','LandingController@pelatihan')->name('landing.pelatihan');
+
     Route::prefix('ajax')->group(function () {    
         Route::get('/diskusi/{id}', 'DiscussionController@index')->name('diskusi.index');
         Route::post('/diskusi/store/{id}', 'DiscussionController@store')->name('diskusi.store');
@@ -63,9 +67,6 @@ Route::get('login', function () {
 });
 Route::post('login', 'AuthCustomController@login')->name('login.post');
 
-// Route::get('register', function () {
-//     return view('registration');
-// });
 // Route::post('register', 'AuthCustomController@register')->name('register.post');
 Route::post('logout', 'AuthCustomController@logout')->name('logout.post');
 

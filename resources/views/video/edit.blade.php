@@ -46,6 +46,19 @@
                                         <label>Title</label>
                                         <input type="text" name="title" value="{{ $video->title }}" class="form-control" autofocus required>
                                     </div>
+                                    @php
+                                    $pelatihan =  DB::table('pelatihan')->get();
+                                    @endphp
+                                    <div class="form-group">
+                                        <label>Pelatihan</label>
+                                        <select name="pelatihan_id" id="" class="form-control" required>
+                                            @foreach ($pelatihan as $item)                                                
+                                                <option value="{{ $item->id }}" @if($video->pelatihan_id == $item->id ) selected @endif >{{ $item->title_course }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        {{-- <input type="text" name="pelatihan_id" class="form-control" autofocus required> --}}
+                                    </div>
                                     <div class="form-group">
                                         <label>Mentor</label>
                                         <input type="text" name="name" value="{{ $video->name }}" class="form-control" autofocus required>
@@ -66,7 +79,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Materi</label>
-                                        <input type="text" name="url_materi" value="{{ $video->url_materi }}"  class="form-control" autofocus required>
+                                        <input type="text" name="materi" value="{{ $video->materi }}"  class="form-control" autofocus>
                                         <small>masukan url materi</small>
                                     </div>
                                     <div class="form-group">
