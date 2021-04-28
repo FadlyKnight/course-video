@@ -98,7 +98,7 @@
         <h4 class="card-title text-left">Umpan Diskusi</h4>
         <form action="#" method="post" id="form-diskusi" class="text-right">
             @csrf
-            <textarea name="komentar" style="height: 150px;" id="komentar" class="form-control"></textarea>
+            <textarea name="komentar" style="height: 150px;" id="komentar" class="form-control" placeholder="Diskusi disini..."></textarea>
             <div style="height: 20px"></div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

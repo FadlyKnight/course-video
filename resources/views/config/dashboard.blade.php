@@ -30,6 +30,7 @@
 @php
     $sliders = \DB::table('configs_app')->where('meta_key', 'data_sliders')->first()->meta_value;
     $about = \DB::table('configs_app')->where('meta_key', 'text_about')->first()->meta_value;
+    $about_image = \DB::table('configs_app')->where('meta_key', 'img_about')->first()->meta_value;
     $user = \DB::table('users')->count();
     $video = \DB::table('video')->count();
     $diskusi = \DB::table('diskusi')->count();
@@ -159,8 +160,9 @@
           </div>
         </div>
 
-        <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-          <div class="card">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 col-sm-12">
               <div class="card-header">
                 <h4>About Text</h4>
               </div>
@@ -176,7 +178,23 @@
                 </div>
               </form>
             </div>
+            <div class="col-lg-6 col-md-6 col-12 col-sm-12">
+              <div class="card-header">
+                <h4>About Image</h4>
+              </div>
+              <form action="{{ route('config.image.about') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="card-body">
+                  <input type="file" name="image_about" class="dropify" data-default-file="{{ $about_image }}" />
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update Image</button>
+                </div>
+              </form>
+            </div>
           </div>
+          
+        </div>
 
 @endsection
 

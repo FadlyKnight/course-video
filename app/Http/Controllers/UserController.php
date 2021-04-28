@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -23,6 +24,18 @@ class UserController extends Controller
 
     public function addProcess(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'min:8|required',
+        ]);
+        if($validator->fails()){
+            // return redirect()->back()->with('error', $validator->getMessageBag()->first())->withInput(); 
+            return redirect()->back()->withErrors($validator)->with([
+                'error' => $validator->getMessageBag()->first(),
+            ])->withInput();
+        }
+
         DB::table('users')->insert([
             'name' => $request->name,
             'email' => $request->email,
@@ -43,6 +56,18 @@ class UserController extends Controller
 
     public function editProcess(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users,name,'.$id,
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'min:8|nullable',
+        ]);
+        if($validator->fails()){
+            // return redirect()->back()->with('error', $validator->getMessageBag()->first())->withInput(); 
+            return redirect()->back()->withErrors($validator)->with([
+                'error' => $validator->getMessageBag()->first(),
+            ])->withInput();
+        }
+
         $updated = [
             'name' => $request->name,
             'email' => $request->email,

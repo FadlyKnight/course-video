@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Pelatihan Bioetika</title>
+		<title>@yield('_title')Pelatihan Bioetika</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Pelatihan Bioetika" />
 		<meta name="keywords" content="Pelatihan Bioetika,Pelatihan,Bioetika" />
@@ -97,7 +97,6 @@
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
 							<li class="active" ><a href="/">Beranda</a></li>
-							<li><a href="about">About</a></li>
 							@php
 								$pelatihan =  DB::table('pelatihan')->get();
 							@endphp
@@ -110,6 +109,7 @@
 									
 								</ul>
 							</li>
+							<li><a href="{{ route('landing.about') }}">About</a></li>
 							{{--
 							<li><a href="#">Artikel</a></li>
 							<li><a href="#">Kuesioner</a></li>

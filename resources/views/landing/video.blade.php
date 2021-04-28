@@ -1,5 +1,9 @@
 @extends('landing.layouts.content')
+@php
+	$title = $video->title." ";
 
+@endphp
+@section('_title', $title )
 @section('content')
 		@php
 			$url = $video->url;
@@ -7,8 +11,6 @@
 		@endphp
 		
 		<div class="container" style="text-align: -webkit-center;">
-			{{-- nama pelatihan --}}
-			<h3 class="text-left">{{ $video->title }}</h3> 
 			<div class="row animate-box" style="max-width: 900px">
 				<div class="embed-responsive embed-responsive-16by9">
 					<div class="plyr__video-embed" id="player">
@@ -26,11 +28,12 @@
 			
 			<div class="row animate-box">
 				<div class="col-md-12  fh5co-heading">
-					<h2>{{ $video->title }}</h2>
+
+					<h2>{{ $video->title }} - {{ $pelatihan->title_course }}</h2>
 					<p class="text-justify">{{ $video->desc }}</p>  
 					<p class="text-justify">Kateogri video {{ $video->category }}</p>    
 					<p class="text-justify">Narasumber {{ $video->name }}</p>                
-					<a href="{{ $video->url }}" class="nav-link"><span>Download Materi</span></a>
+					<a href="{{ $video->materi }}" class="btn btn-primary col-md-offset-10 text-right" target="_blank"><span>Download Materi</span></a>
 				</div> 			
 				
 			</div>			

@@ -20,7 +20,7 @@
     border:0px solid black;
 	background-color: transparent !important;
 }
-.owl-prev i, .owl-next i {transform : scale(9,6); color: #ccc;}
+.owl-prev i, .owl-next i {transform : scale(9,6); color: rgba(24, 22, 22, 0.5);}
 </style>
 <div id="fh5co-course-categories">
 	<div class="container">
@@ -40,7 +40,8 @@
 						@forelse ($item['video_data'] as $item)
 							@include('landing.includes.video-data')
 						@empty
-							<h3 class="text-center">Tidak Ada Video</h3>
+							<h3 class="text-center">Cooming Soon</h3>
+							<div style="height: 50px;"></div>
 						@endforelse
 					</div>
 					<div class="text-center">

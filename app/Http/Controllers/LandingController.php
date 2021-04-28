@@ -42,10 +42,17 @@ class LandingController extends Controller
 
     public function pelatihan($slug){
         $pelatihan = DB::table('pelatihan')->where('slug', $slug)->first();
+        $filter = request()->category;
         if($pelatihan == NULL){
             return redirect()->route('landing.index')->with('error','Pelatihan Tidak Ditemukan');
         }
-        $video = DB::table('video')->where('pelatihan_id', $pelatihan->id)->get();
+        $video = DB::table('video')->where('pelatihan_id', $pelatihan->id)
+                        ->when($filter, function ($query, $filter) {
+                            return $query->where('category', $filter);
+                        })->get();
+        // if ($filter != NULL) {
+        //     dd($filter, $video);
+        // }
         
         return view ('landing.pelatihan', compact('video','pelatihan'));
     }

@@ -68,6 +68,36 @@ class ConfigAppController extends Controller
 
         return redirect()->back()->with('success', 'Teks About Berhasil diupdate');
     }
+
+    public function configImageAbout()
+    {
+        $filename_image = DB::table('configs_app')->where('meta_key', 'img_about')->first()->meta_value;
+
+        if (request()->hasFile('image_about') != NULL) {
+            
+            $dir = 'about/' . date('Y') . '/' . date('m');
+            $file = $img_file = request()->image_about;
+            $ext = $img_file->getClientOriginalExtension();
+
+            $validator = Validator::make(request()->all(),
+                ['image_about' => 'mimes:jpeg,jpg,png,gif|required|max:2000'],
+            );
+
+            if($validator->fails()){
+                return redirect()->back()->with('error', $validator->getMessageBag()->first());
+            }
+            $tipe_file = 'slider';
+            $filename_image            = $dir . '/' . Str::random(20) . '_' . date('d') . '_' . md5(time()) . $tipe_file.'.' . $ext;
+            
+            $file->move(public_path($dir), $filename_image);
+            
+        }        
+
+        DB::table('configs_app')->where('meta_key', 'img_about')
+        ->update(['meta_value' => $filename_image]);
+
+        return redirect()->back()->with('success', 'Teks About Berhasil diupdate');
+    }
     
     // public function 
 }

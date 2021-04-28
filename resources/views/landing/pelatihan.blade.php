@@ -9,11 +9,35 @@
 <div id="fh5co-course-categories">
 	<div class="container">
     <div class="row animate-box">
-        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+       
+		<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
             <h2>Pelatihan {{ $pelatihan->title_course }}</h2>
             <p>{{ Str::limit($pelatihan->desc_course, 180, '...') }}</p>
-        </div> 
+		
+			
+       		 </div> 
     </div>
+	
+	<div class="row">
+		@php
+			$cat_video = DB::table('video')->groupBy('category')->select('category');
+		@endphp
+
+		<form  class="col-md-offset-9 text-right fh5co-heading" action="{{ route('landing.pelatihan', $pelatihan->slug ) }}" method="get">
+			<div class="row">
+				<div style="display: flex">
+					<select name="category" style="margin-right: 2opx" class="form-control">
+						<option value="">Semua</option>
+						@foreach ($cat_video->get() as $item)
+							<option value="{{$item->category}}" {{ request()->category == $item->category ? 'selected' : '' }} >{{$item->category}}</option>
+						@endforeach
+					</select>
+					<button style="margin-left: 20px;" class="btn btn-icon btn-primary" type="submit"><i class="fa fa-search"></i></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
     <div class="row">
         @forelse ($video as $item)
             @include('landing.includes.video-data')

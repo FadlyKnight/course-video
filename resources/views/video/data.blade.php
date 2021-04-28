@@ -67,7 +67,7 @@
                                 <tr>
                                     <td>{{ $loop ->iteration }}</td>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ $item->title_course }}</td>
+                                    <td>{{ $item->title_course ?? "Pelatihan Tidak Ditemukan" }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category }}</td>
                                     <td>{{ Str::limit($item->desc, 40, ' (...)') }}</td>

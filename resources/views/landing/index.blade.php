@@ -17,7 +17,7 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+			<h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -29,10 +29,10 @@
 					<div class="alert alert-danger">{{ \Session::get('error') }}</div>
 				@endif
 				<div class="form-group">
-				<label for="email">Email</label>
-				<input required id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+				<label for="username">Username / Email</label>
+				<input required id="username" type="text" class="form-control" name="email" tabindex="1" required autofocus>
 				<div class="invalid-feedback">
-					Please fill in your email
+					Masukkan Username Anda
 				</div>
 				</div>
 
@@ -42,7 +42,7 @@
 				</div>
 				<input required id="password" type="password" class="form-control" name="password" tabindex="2" required>
 				<div class="invalid-feedback">
-					please fill in your password
+					Masukkan Password Anda
 				</div>
 				</div>
 

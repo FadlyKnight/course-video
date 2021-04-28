@@ -35,17 +35,22 @@
                 </div>
                 
                 <div class="card-body"> 
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-4 offset-md-4">
                             <form action="{{route('user.addProcess')}}"method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" name="name" class="form-control" autofocus required>
+                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" autofocus required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control" autofocus>
+                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>

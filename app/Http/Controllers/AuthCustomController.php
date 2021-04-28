@@ -16,7 +16,11 @@ class AuthCustomController extends Controller
     {
         $email = request()->email;
         $pass = request()->password;
-        $user = User::where('email', $email)->first();
+        $user = User::where('name', $email)->first();
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $user = User::where('email', $email)->first();
+        }
+        
         // dd($user);
         if ($user != NULL) {
             $check = Hash::check($pass, $user->password);

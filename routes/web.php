@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'LandingController@index')->name('landing.index');
-Route::get('about', function () {
+Route::get('tentang', function () {
     return view('landing.about');
-});
+})->name('landing.about');
 
 Route::middleware(['auth'])->group(function () {   
     Route::get('/video/{id}', 'LandingController@watchVideo')->name('landing.video');
@@ -59,6 +59,8 @@ Route::group(['middleware' => ['auth','role:admin'], 'prefix' => 'dashboard' ], 
     
     Route::post('config/slider', 'ConfigAppController@configSlider')->name('config.slider');
     Route::post('config/about', 'ConfigAppController@configAbout')->name('config.about');
+    Route::post('config/about-image', 'ConfigAppController@configImageAbout')->name('config.image.about');
+    
     
 });
 

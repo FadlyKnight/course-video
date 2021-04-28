@@ -36,7 +36,11 @@
                 
                 <div class="card-body">
                    
-                    
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                         <div class="row">
                             <div class="col-md-4 offset-md-4">
                                 <form action="{{ route('user.editProcess',$user->id) }}" method="POST">
