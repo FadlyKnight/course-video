@@ -24,6 +24,7 @@ class PelatihanController extends Controller
 
     public function addProcess(Request $request)
     {
+        $new_slug = strtolower(str_replace(" ", "-",$request->title_course));
         $new_slug = Str::slug($request->title_course); //strtolower(str_replace(" ", "-",$request->title_course));
         DB::table('pelatihan')->insert([
             'title_course' => $request->title_course,

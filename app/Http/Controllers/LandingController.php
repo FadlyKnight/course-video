@@ -56,4 +56,5 @@ class LandingController extends Controller
         
         return view ('landing.pelatihan', compact('video','pelatihan'));
     }
+
 }

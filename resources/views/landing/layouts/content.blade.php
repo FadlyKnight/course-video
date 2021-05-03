@@ -62,6 +62,12 @@
 			#fh5co-footer {
 			    padding: 4em 0;
 			}
+			@media only screen and (max-width: 600px) {
+				#fh5co-hero.flexslider.slidesli,#fh5co-hero.flexslider.slider-text  {
+					min-height: 430px !important;
+					height: 430px !important;
+				}
+			}
 		</style>
         @yield('css')
 	</head>

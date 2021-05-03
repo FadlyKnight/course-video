@@ -43,18 +43,12 @@
                                     @method('patch')
                                     @csrf
                                     <div class="form-group">
-                                        <label>coursename</label>
-                                        <input type="text" name="name" value="{{ $course->name }}" class="form-control" autofocus required>
+                                        <label>Pelatihan</label>
+                                        <input type="text" name="title_course" value="{{ $course->title_course }}" class="form-control" autofocus required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" name="email" value="{{ $course->email }}" class="form-control" autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" id="myInput" value="" name="password" class="form-control">
-                                        <p><input type="checkbox" onclick="myFunction()"> Show Password</p>
-                                        <small>Kosongkan Jika tidak ingin reset password</small>
+                                        <label>Description</label>
+                                        <textarea name="desc_course" class="form-control">{{ $course->desc_course }}</textarea>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </form>
@@ -65,16 +59,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function myFunction() {
-          var x = document.getElementById("myInput");
-          if (x.type === "password") {
-            x.type = "text";
-          } else {
-            x.type = "password";
-          }
-        }
-    </script>
     
 @endsection

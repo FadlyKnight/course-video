@@ -23,7 +23,7 @@
                                     </div>
                                 </div>	
                                 <div class="desc">
-                                    <h3 class="text-center"><a href="{{ route('landing.video', encrypt($item->id)) }}">{{ $item->title }}</a></h3>
+                                    <h3 class="text-center"><a href="{{ route('landing.video', encrypt($item->id)) }}">{{ Str::limit($item->title, 10, ' ...') }}</a></h3>
                                     <p>Narasumber : {{ $item->name }} <br/> Kategori : {{ $item->category }}<br/>5 comments <i class="icon-messages"> </i></p>
                                 </div>
                             </div>

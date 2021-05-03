@@ -51,9 +51,15 @@
                                     @endphp
                                     <div class="form-group">
                                         <label>Pelatihan</label>
+<<<<<<< HEAD
+                                        <select name="pelatihan_id" value="{{ $video->pelatihan_id }}" id="" class="form-control" required>
+                                            @foreach ($pelatihan as $item)                                                
+                                                <option value="{{ $item->id }}">{{ $item->title_course }}</option>
+=======
                                         <select name="pelatihan_id" id="" class="form-control" required>
                                             @foreach ($pelatihan as $item)                                                
                                                 <option value="{{ $item->id }}" @if($video->pelatihan_id == $item->id ) selected @endif >{{ $item->title_course }}</option>
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
                                             @endforeach
                                         </select>
 

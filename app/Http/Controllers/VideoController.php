@@ -9,6 +9,9 @@ class VideoController extends Controller
 {
     public function data()
     {
+<<<<<<< HEAD
+        $video = DB::table('video')->get();
+=======
         $video = DB::table('video')
                 ->leftJoin('pelatihan', function($join){
                     $join->on('pelatihan.id','=','video.pelatihan_id');
@@ -16,6 +19,7 @@ class VideoController extends Controller
                 'pelatihan.id as pelatihan_id','video.*')
                 ->get();
         // dd($video);
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
         //return $users;
         return view('video.data', ['video' => $video]);
     }
@@ -35,8 +39,11 @@ class VideoController extends Controller
             'category' => $request->category,
             'name' => $request->name,
             'pelatihan_id' => $request->pelatihan_id,
+<<<<<<< HEAD
+=======
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
         ]);
 
         return redirect()->route('video.data')->with('status', 'Data berhasil ditambah!');
@@ -60,7 +67,10 @@ class VideoController extends Controller
             'materi' => $request->materi,
             'name' => $request->name,
             'pelatihan_id' => $request->pelatihan_id,
+<<<<<<< HEAD
+=======
             'updated_at' => date('Y-m-d H:i:s'),
+>>>>>>> a5d4733e5187bef6264635896eb28aedb37b0a8d
         ]);
 
         return redirect()->route('video.data')->with('status', 'Data berhasil diupdate!');
